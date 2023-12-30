@@ -17,7 +17,7 @@
                             <div class="item">
                                 <a href="{{$sl->link}}">
                                     <picture>
-                                        <img style="height: 585px;"class="border-radius-10" src="assetsUser/images/{{$sl->image}}" alt="slide {{$sl->id}}" />
+                                        <img style="height: 585px;"class="border-radius-10" src="{{ asset('images').'/'.$sl->image }}" alt="slide {{$sl->id}}" />
                                     </picture>
                                 </a>
                             </div>

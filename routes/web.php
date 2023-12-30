@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\SliderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,8 +109,8 @@ Route::group(['middleware' => 'auth:admin'], function() {
                 Route::get('', 'HoadonController@index')->name('list');
                 Route::get('cap-nhat/{id}', 'HoadonController@edit')->name('edit');
                 Route::post('cap-nhat/{id}', 'HoadonController@update')->name('update');
-                Route::get('inhoadon/{id}', 'HoadonController@inhoadon')->name('inhoadon'); 
-                Route::delete('xoa', 'HoadonController@destroy')->name('delete');           
+                Route::get('inhoadon/{id}', 'HoadonController@inhoadon')->name('inhoadon');
+                Route::delete('xoa', 'HoadonController@destroy')->name('delete');
                 Route::get('thong-ke', 'HoadonController@statistic')->name('statistic');
                 Route::get('xuat-excel', 'HoadonController@excel')->name('excel');
 
@@ -121,9 +122,17 @@ Route::group(['middleware' => 'auth:admin'], function() {
             });
         });
 
+        //Slider
+        Route::prefix('slider')->group(function () {
+            Route::get('index', 'SliderController@index')->name('slider.index');
+            Route::post('upload', 'SliderController@upload')->name('slider.upload');
+            Route::post('', 'SliderController@store')->name('slider.store');
+            Route::get('{id}', 'SliderController@delete')->name('slider.delete');
+        });
+
         //oder code
-        
-       
+
+
     });
 });
 
@@ -145,14 +154,14 @@ Route::group(['namespace' => 'User'], function() {
     //Đăng nhập bằng FB
     Route::get('/login-facebook','DangNhapDangKyController@login_facebook')->name('login_facebook');
     Route::get('/facebook/callback','DangNhapDangKyController@callback_facebook')->name('callback_facebook');
-   
+
    //người dùng
     Route::get('/nguoidung/{id}','khachhangController@nguoidung')->name('nguoidung');
     Route::post('/doipassword/{id}','khachhangController@doipassword')->name('doipassword');
     Route::get('/edits_khachhang/{id}','khachhangController@getedit_khachhang');
     Route::put('/edit_khachhang','khachhangController@edit_khachhang')->name('update_nguoidung');
     Route::post('/edit_Image/{id}','khachhangController@edit_hinhanh')->name('update_image');
-    
+
     //page
     Route::get('/', 'TrangChuController@index')->name('trangchu');
     Route::get('/trangchu', 'TrangChuController@index')->name('trangchu');
@@ -162,7 +171,7 @@ Route::group(['namespace' => 'User'], function() {
     Route::get('/sanpham/new', 'SanPhamController@new')->name('sanphamnew');
     Route::get('/sanpham/sale', 'SanPhamController@sale')->name('sanphamsale');
     Route::post('/quickview','SanPhamController@quickview')->name('quickview');
-   
+
     //Chi tiết sản phẩm
     Route::get('/chitietsanpham/{id}', 'CTSPController@index')->name('chitietsanpham');
 
@@ -178,7 +187,7 @@ Route::group(['namespace' => 'User'], function() {
     Route::get('/cart-del/{id}','GioHangController@cartDel')->name('cart-del');
     Route::get('/xoa-het','GioHangController@xoaHet')->name('xoa-het');
     Route::get('/update-cart-qty/{id}','GioHangController@updateCartQty')->name('update-cart-qty');
-    
+
     //Đặt hàng
     Route::get('/dathang', 'DatHangController@index')->name('dathang');
     Route::post('/dat-hang','DatHangController@datHang')->name('dat-hang');
@@ -202,5 +211,5 @@ Route::group(['namespace' => 'User'], function() {
 
     Route::get('/don-hang','DonHangController@index')->name('donhang.index');
     Route::get('/chi-tiet-donhang/{id}','DonHangController@viewOrder')->name('chi-tiet-donhang');
-    
+
 });

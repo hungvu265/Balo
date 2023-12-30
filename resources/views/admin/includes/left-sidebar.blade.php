@@ -84,6 +84,12 @@
                         <span>Hóa đơn</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('slider.index') }}" class="waves-effect @if($page == 'Slider') mm-active @endif">
+                        <i class="fas	fa-file-alt"></i>
+                        <span>Slider</span>
+                    </a>
+                </li>
 
                 {{-- @if (Auth::user()->vai_tro_id == 1)
                     <li>

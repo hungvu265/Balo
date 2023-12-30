@@ -15,6 +15,7 @@
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('plugins/bootstrap-toggle/css/bootstrap-toggle.min.css') }}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <style>
             .pointer {
                 cursor: pointer;
@@ -63,6 +64,8 @@
         <script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.en-CA.js') }}" charset="UTF-8"></script>
         <script src="{{ asset('plugins/bootstrap-toggle/js/bootstrap-toggle.min.js') }}"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
         @yield('page-js')
 

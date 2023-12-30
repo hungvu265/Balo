@@ -9,7 +9,7 @@ use App\Models\ChiTietSP;
 class TrangChuController extends Controller
 {
     public function index() {
-        $slide = Slide::all();
+        $slide = Slide::orderBy('position', 'asc')->get();
 
 
 
@@ -18,7 +18,7 @@ class TrangChuController extends Controller
 
         $sanphammoi = ChiTietSP::where('new',0)->where('tinh_trang','0')->get();
         $sanphamsale = ChiTietSP::where('giam_gia','<>',0)->where('tinh_trang',0)->get();
-        
+
         return view('user.page.trang-chu.trangchu',compact('slide','sanpham','sanphamsale','sanphammoi'));
     }
 
